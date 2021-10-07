@@ -27,6 +27,28 @@ locals {
     subnets = [local.subnet1, local.subnet2, local.subnet3]
 
     pickone = flatten([for subnet in local.subnets : subnet.address_prefixes if subnet.name == "A"])
+
+    listofobj = [
+      {
+        given = "Bill"
+        surname = "Todd"
+      },
+      {
+        given = "Joe"
+        surname = "Smith"
+      }
+    ]
+
+    mapofobj = {
+      billtodd = {
+        given = "Bill"
+        surname = "Todd"
+      },
+      joesmith = {
+        given = "Joe"
+        surname = "Smith"
+      }
+    }
 }
 
 output "mystring" {
@@ -67,4 +89,20 @@ output "subnets" {
 
 output "pickone" {
   value = local.pickone
+}
+
+output "listofobj" {
+  value = local.listofobj
+}
+
+output "mapofobj" {
+  value = local.mapofobj
+}
+
+output "mapofobj_keys" {
+  value = keys(local.mapofobj)
+}
+
+output "billtodds_name" {
+  value = local.mapofobj["billtodd"].given
 }
