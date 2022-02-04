@@ -17,7 +17,7 @@ locals {
   }
 
   group_members = [for gk, gv in local.groups : {
-     for mk, mv in local.members : gv.name => mv...
+     for mk, mv in local.members : gv.name => mv... if (contains(gv.members, mk))
     }
   ]
 

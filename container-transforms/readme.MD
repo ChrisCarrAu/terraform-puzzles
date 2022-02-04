@@ -29,13 +29,10 @@ Produces output
   + group_members = {
       + bar = [
           + "Zak",
-          + "Zeke",
-          + "Zane",
         ]
       + foo = [
           + "Zak",
           + "Zeke",
-          + "Zane",
         ]
     }
   + member_groups = {
