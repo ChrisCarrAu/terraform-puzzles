@@ -2,18 +2,27 @@
 
 Examples of transformations on list and map combinations
 
-## GROUP BY
+## GROUP TRANSFORMATIONS
+Given a group name, return a list of members of the group
 
-Given
+Given a member, return a list of groups they are a member of
+
+### Inputs
+- A map of groups. **key** is group-name and the **value** is a list of group-member-id.
+- A separate map of members. **key** is member-id and **value** is member name.
+### Desired outcome
+- Produce a map of group-name to list-of-member-names
+- Product a map of member-name to list-of-owner-groups
+
+Given the input values
 
 ```
+  # Map of group name to list of members
   groups = {
-    "group1" = {
-      name    = "foo"
+    "foo" = {
       members = ["member1", "member2"]
     }
-    "group2" = {
-      name    = "bar"
+    "bar" = {
       members = ["member1"]
     }
   }

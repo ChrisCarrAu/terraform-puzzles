@@ -1,11 +1,9 @@
 locals {
   groups = {
-    "group1" = {
-      name    = "foo"
+    "foo" = {
       members = ["member1", "member2"]
     }
-    "group2" = {
-      name    = "bar"
+    "bar" = {
       members = ["member1"]
     }
   }
@@ -17,13 +15,13 @@ locals {
   }
 
   group_members = [for gk, gv in local.groups : {
-     for mk, mv in local.members : gv.name => mv... if (contains(gv.members, mk))
+     for mk, mv in local.members : gk => mv... if (contains(gv.members, mk))
     }
   ]
 
   # for each member and group, get a list of map with member name mapped to group name where the member is in the group - group groups by member name
   member_groups = [for mk, mv in local.members : {
-      for gk, gv in local.groups : mv => gv.name... if (contains(gv.members, mk))
+      for gk, gv in local.groups : mv => gk... if (contains(gv.members, mk))
   }]
 }
 
